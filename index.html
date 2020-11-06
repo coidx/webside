@@ -1,5 +1,24 @@
 <html>
 <script>
-    window.location.href = "privacy.html"
+    function GetRequest() {
+        var url = location.search;
+        url = decodeURI(url);
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0].replace(/\s/g, "")] = unescape(strs[i].split("=")[1].replace(/\s/g, ""));
+            }
+        }
+        return theRequest;
+    }
+    var params = GetRequest();
+    if (params.type == "privacy") {
+        window.location.href = "privacy.html"
+    } else {
+
+    }
 </script>
+
 </html>
